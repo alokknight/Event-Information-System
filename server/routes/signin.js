@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config({path: './config.env'});
+
+const key = process.env.secret_key;
 
 const User = require('../models/users');
 
@@ -21,8 +25,15 @@ router.post('/', (req,res, next) => {
                 });
             }
             if (result){
+                const token = jwt.sign({
+                    userId: user[0]._id,
+                    firstName: user[0].firstName,
+                    lastName: user[0].lastName,
+                    email: user[0].email, 
+                }, key, { expiresIn: '1h'});
                 return res.status(200).json({
-                    message: 'Auth Successful'
+                    message: 'Auth Successful',
+                    token: token
                 })
             }
             res.status(401).json({

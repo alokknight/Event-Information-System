@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Link} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Link to="/signin" className="text-info">Login here</Link>
-      <Link to="/signup" className="text-info">SignUp here</Link>
       <App/>
     </BrowserRouter>
   </React.StrictMode>,

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Form from './Form';
+import Navbar from './Navbar';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -28,17 +29,17 @@ class SignIn extends React.Component {
         password: this.state.password
       }).then(res => {
           console.log(res);
-        // this.setState({
-        //   token: res.data.token
-        // })
-        // const data = {
-        //   token: this.state.token,
-        //   time: new Date().getTime()
-        // }
-        // localStorage.setItem('userTokenTime', JSON.stringify(data));
-        // this.setState({
-        //   redirect: true
-        // });
+        this.setState({
+          token: res.data.token
+        })
+        const data = {
+          token: this.state.token,
+          time: new Date().getTime()
+        }
+        localStorage.setItem('userTokenTime', JSON.stringify(data));
+        this.setState({
+          redirect: true
+        });
       }).catch(err => {
         console.log(err);
       });
@@ -60,8 +61,10 @@ class SignIn extends React.Component {
   }
 
   render() {
-    // if (this.state.redirect) return <Redirect to="/" />;
+    if (this.state.redirect) return <Navigate to="/" />;
     return (
+    <React.Fragment>
+      <Navbar/>
       <Form onSubmit={this.onSubmitHandler.bind(this)}>
         <h3 className="text-center text-info">Login</h3>
         <div className="form-group">
@@ -90,7 +93,8 @@ class SignIn extends React.Component {
           <button onClick={this.onSubmitHandler} className="btn btn-info btn-md" type="button">Submit</button>
           <Link to="/signup" className="text-info">Sign Up here</Link>
         </div>
-      </Form>
+      </Form> 
+    </React.Fragment>
     );
   }
 }

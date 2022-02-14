@@ -1,7 +1,7 @@
 //For server configuration
 const http = require('http');
 const app = require('./app');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv'); // loads environment variable from .env file to process.env file
 const mongoose = require('mongoose');
 
 //Config Path
