@@ -29,7 +29,8 @@ export default function Footer() {
                 </ul>
             </div>
 
-            <div className="col-lg-3 col-md-6 footer-links">
+
+            {/* <div className="col-lg-3 col-md-6 footer-links">
                 <h4>Useful Links</h4>
                 <ul>
                 <li><i className="fa fa-angle-right"></i> <a href="#">Home</a></li>
@@ -38,10 +39,23 @@ export default function Footer() {
                 <li><i className="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
                 <li><i className="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
                 </ul>
+            </div> */}
+            <div className="col-lg-3 col-md-6 footer-links">
+                <h4>Contact Us</h4>
+                <p>Still have Questions? Go ahead, ask:</p>
+                <i className="fa fa-map-marker" ></i> Chicago, US<br />
+                <i className="fa fa-phone" ></i> Phone: +91 7897867722<br />
+                <i className="fa fa-envelope" > </i> Email: alokpatel885@mail.com<br />
+                <form action="/action_page.php" target="_blank">
+                    <p><input className="input border" type="text" placeholder="Name" required name="Name" /></p>
+                    <p><input className="input border" type="text" placeholder="Email" required name="Email" /></p>
+                    <p><input className="input border" type="text" placeholder="Message" required name="Message" /></p>
+                    <button type="submit" className="button green third">Send a Message</button>
+                </form>
             </div>
 
             <div className="col-lg-3 col-md-6 footer-contact">
-                <h4>Contact Us</h4>
+                <h4>DEVELOPED BY</h4>
                 <p>
                 MMMUT Gorakhpur,<br/>
                 India<br/>
@@ -87,3 +101,17 @@ export default function Footer() {
 </>
     )
 }
+            {/* <!-- Contact --> */}
+            <div className="container" id="contact">
+                <h2>Contact</h2>
+                <i className="fa fa-map-marker" ></i> Chicago, US<br />
+                <i className="fa fa-phone" ></i> Phone: +91 7897867722<br />
+                <i className="fa fa-envelope" > </i> Email: alokpatel885@mail.com<br />
+                <p>Still have any Questions? Go ahead, ask them:</p>
+                <form action="/action_page.php" target="_blank">
+                    <p><input className="input border" type="text" placeholder="Name" required name="Name" /></p>
+                    <p><input className="input border" type="text" placeholder="Email" required name="Email" /></p>
+                    <p><input className="input border" type="text" placeholder="Message" required name="Message" /></p>
+                    <button type="submit" className="button green third">Send a Message</button>
+                </form>
+            </div>

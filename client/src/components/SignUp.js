@@ -75,6 +75,14 @@ class SignUp extends React.Component {
     return (
     <React.Fragment>
       <Navbar/>
+  <div className="container" >
+	<div className="d-flex justify-content-center h-100">
+		<div className="registercard">
+			<div className="card-header">
+				{/* <h3>Register</h3> */}
+			</div>
+
+			<div className="card-body">
       <Form onSubmit={this.onSubmitHandler.bind(this)}>
         <h3 className="text-center text-info">Register</h3>
         <div className="form-group">
@@ -106,7 +114,7 @@ class SignUp extends React.Component {
             className="form-control"
             type="email"
             name="email"
-            placeholder="example@domain.com"
+            placeholder="xyz@domain.com"
             onChange={this.emailInputChangeHandler}
             required />
         </div>
@@ -121,12 +129,30 @@ class SignUp extends React.Component {
             onChange={this.passwordInputChangeHandler}
             required />
         </div>
-        <div className="d-flex justify-content-between align-items-end">
-          <input type="submit" name="submit" className="btn btn-info btn-md" value="Submit" />
-          <Link to="/signin" className="text-info">Login here</Link>
+        <div className="form-group my-2">
+          <input type="submit" value="Register" className="btn float-right login_btn"/>
         </div>
-      </Form> 
-    </React.Fragment>
+      </Form>
+
+      <div className="card-footer">
+                <div className="d-flex justify-content-center links">
+                  Have an account??
+                  <Link to="/signin" className="d-flex justify-content-centertext-info">Login</Link>
+                </div>
+
+                <div className="d-flex justify-content-center">
+                  <a href="/forget_password/">Forgot your password?</a>
+                </div>
+
+      </div>
+
+
+      </div>
+		</div>
+	</div>
+</div>
+</React.Fragment>
+
     );
   }
 }

@@ -5,7 +5,6 @@ class EventAdd extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <h1>You can add your events here</h1>
             </div>
         )
