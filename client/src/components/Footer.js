@@ -29,17 +29,6 @@ export default function Footer() {
                 </ul>
             </div>
 
-
-            {/* <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                <li><i className="fa fa-angle-right"></i> <a href="#">Home</a></li>
-                <li><i className="fa fa-angle-right"></i> <a href="#">About us</a></li>
-                <li><i className="fa fa-angle-right"></i> <a href="#">Services</a></li>
-                <li><i className="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
-                <li><i className="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
-                </ul>
-            </div> */}
             <div className="col-lg-3 col-md-6 footer-links">
                 <h4>Contact Us</h4>
                 <p>Still have Questions? Go ahead, ask:</p>

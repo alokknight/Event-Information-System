@@ -111,14 +111,9 @@ class SignIn extends React.Component {
                 </div>
 
                 <div className="card-footer">
-              {/* <div className="form-group"> */}
-                <input onclick={this.onSubmitHandler}
-                        type="submit"
-                        className="btn float-left login_btn"
-                        // className="btn btn-info btn-md"
-                        name="submit"
-                        value="login"
-                        />
+                <button onClick={this.onSubmitHandler}
+                  className="btn float-left login_btn"
+                  type="button">Login</button>
               </div>
 
 
@@ -142,13 +137,13 @@ class SignIn extends React.Component {
 
               <div className="card-footer">
                 <div className="d-flex justify-content-center links">
-                  <button onClick={this.onSubmitHandler}
+                  {/* <button onClick={this.onSubmitHandler}
                   className="btn btn-info btn-md"
                   // className="btn float-right login_btn"
-                  type="button">Submit</button>
+                  type="button">Submit</button> */}
 
                   <Link to="/signup" className="d-flex justify-content-centertext-info">Sign Up</Link>
-                  <a href="/signup">Sign Up</a>
+                  {/* <a href="/signup">Sign Up</a> */}
                 </div>
 
                 <div className="d-flex justify-content-center">
