@@ -42,6 +42,7 @@ class SignIn extends React.Component {
         });
       }).catch(err => {
         console.log(err);
+        alert('Please enter valid details');
       });
     } else {
       alert('Please enter valid details');

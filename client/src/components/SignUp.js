@@ -71,7 +71,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    if (this.state.redirect) return <Navigate to='/signin' />
+    if (this.state.redirect) return <Navigate to='/' />
     return (
     <React.Fragment>
       <Navbar/>

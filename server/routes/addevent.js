@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/users')
 const Event = require('../models/event');
 
-router.post('/', (req,res, next) => {
+router.post('/add', (req,res, next) => {
     User.find({email: req.body.email})
     .then( event => {
         Event.create(req.body);

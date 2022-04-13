@@ -14,7 +14,7 @@ app.use(bodyParser.json()); //A middleware extracts the entire body portion of a
 // app.use('/', require('./routes/home'));
 app.use('/signup', require('./routes/signup'));
 app.use('/signin', require('./routes/signin'));
-app.use('/event/add', checkAuth, require('./routes/addevent'));
+app.use('/event', checkAuth, require('./routes/addevent'));
 
 
 
