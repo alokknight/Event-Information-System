@@ -57,11 +57,11 @@ export default function Footer() {
                 </p>
 
                 <div className="social-links">
-                <a href="#" className="twitter"><i className="fa fa-twitter"></i></a>
-                <a href="#" className="facebook"><i className="fa fa-facebook"></i></a>
-                <a href="#" className="instagram"><i className="fa fa-instagram"></i></a>
-                <a href="#" className="google-plus"><i className="fa fa-google-plus"></i></a>
-                <a href="#" className="linkedin"><i className="fa fa-linkedin"></i></a>
+                <a href="https://www.codeworld.ml" className="twitter"><i className="fa fa-twitter"></i></a>
+                <a href="https://www.codeworld.ml" className="facebook"><i className="fa fa-facebook"></i></a>
+                <a href="https://www.codeworld.ml" className="instagram"><i className="fa fa-instagram"></i></a>
+                <a href="https://www.codeworld.ml" className="google-plus"><i className="fa fa-google-plus"></i></a>
+                <a href="https://www.codeworld.ml" className="linkedin"><i className="fa fa-linkedin"></i></a>
                 </div>
 
             </div>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         <div className="container">
             <div className="copyright">
-                &copy; Copyright <strong>CODERPAPA</strong>. All Rights Reserved
+                &copy; Copyright <strong></strong>. All Rights Reserved
             </div>
             <div className="credits">
                 {/* <!--
@@ -83,14 +83,14 @@ export default function Footer() {
                 Made with 💖
             </div>
         </div>
-        <a href="#" className="back-to-top"><i className="fa fa-angle-up mx-4"></i></a>
+        {/* <a href="#" className="back-to-top"><i className="fa fa-angle-up mx-4"></i></a> */}
 </footer>
 
 </div>
 </>
     )
 }
-            {/* <!-- Contact --> */}
+            // Contact Section 
             <div className="container" id="contact">
                 <h2>Contact</h2>
                 <i className="fa fa-map-marker" ></i> Chicago, US<br />

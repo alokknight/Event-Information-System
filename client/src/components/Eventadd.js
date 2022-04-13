@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 class EventAdd extends React.Component {
     constructor(props){
