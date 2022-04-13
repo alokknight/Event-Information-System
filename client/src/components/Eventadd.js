@@ -13,7 +13,6 @@ class EventAdd extends React.Component {
         if(!this.state.redirect) return <Navigate to="/signin"/>; 
         return(
             <div>
-                <Navbar/>
                 <h1>You can add your events here</h1>
             </div>
         )

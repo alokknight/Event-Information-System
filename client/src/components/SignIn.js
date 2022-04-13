@@ -28,7 +28,7 @@ class SignIn extends React.Component {
         email: this.state.email,
         password: this.state.password
       }).then(res => {
-          console.log(res);
+        console.log(res);
         this.setState({
           token: res.data.token
         })
@@ -64,38 +64,100 @@ class SignIn extends React.Component {
   render() {
     if (this.state.redirect) return <Navigate to="/" />;
     return (
-    <React.Fragment>
-      <Navbar/>
-      <Form onSubmit={this.onSubmitHandler.bind(this)}>
-        <h3 className="text-center text-info">Login</h3>
-        <div className="form-group">
-          <label htmlFor="email" className="text-info">Email:</label><br />
-          <input
-            id="email"
-            className="form-control"
-            type="email"
-            name="email"
-            placeholder="example@domain.com"
-            onChange={this.emailInputChangeHandler}
-            required />
+      <React.Fragment>
+        <Navbar />
+
+
+        <div className="container">
+          <div className="d-flex justify-content-center h-100">
+            <div className="card">
+              <div className="card-header">
+                {/* <img style= "align:center"; src="{{request.scheme}}://{{request.META.HTTP_HOST}}/static/img/smartservelogo.jpg" alt="EMS"width="50" height="50"></img> */}
+                <div className="d-flex justify-content-end social_icon">
+                  <span><i className="fa fa-facebook-square"></i></span>
+                  <span><i className="fa fa-google-plus-square"></i></span>
+                  <span><i className="fa fa-twitter-square"></i></span>
+                </div>
+                {/* <h2>Event ManageMent</h2> */}
+              </div>
+
+              <div className="card-body"></div>
+
+              <Form onSubmit={this.onSubmitHandler.bind(this)}>
+                <h3 className="text-center text-info">Login</h3>
+                <div className="form-group">
+                  <label htmlFor="email" className="text-info">Email:</label><br />
+                  <input
+                    id="email"
+                    className="form-control"
+                    type="email"
+                    name="email"
+                    placeholder="xyz@domain.com"
+                    onChange={this.emailInputChangeHandler}
+                    required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="text-info">Password:</label><br />
+                  <input
+                    id="password"
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="********"
+                    onChange={this.passwordInputChangeHandler}
+                    required />
+                </div>
+                <div className="d-flex justify-content-between align-items-end my-2">
+
+                </div>
+
+                <div className="card-footer">
+                <button onClick={this.onSubmitHandler}
+                  className="btn float-left login_btn"
+                  type="button">Login</button>
+              </div>
+
+
+              {/* <div className="input-group form-group">
+                <input type="email"
+                            className="form-control"
+                            placeholder = "Username@gmail.com"
+                            name="username"/>
+              </div>
+
+              <div className="input-group form-group">
+                <input type="password"
+                            className="form-control"
+                            placeholder="password"
+                            name='password'/>
+              </div> */}
+
+
+              </Form>
+
+
+              <div className="card-footer">
+                <div className="d-flex justify-content-center links">
+                  {/* <button onClick={this.onSubmitHandler}
+                  className="btn btn-info btn-md"
+                  // className="btn float-right login_btn"
+                  type="button">Submit</button> */}
+
+                  <Link to="/signup" className="d-flex justify-content-centertext-info">Sign Up</Link>
+                  {/* <a href="/signup">Sign Up</a> */}
+                </div>
+
+                <div className="d-flex justify-content-center">
+                  <a href="/forget_password/">Forgot your password?</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password" className="text-info">Password:</label><br />
-          <input
-            id="password"
-            className="form-control"
-            type="password"
-            name="password"
-            placeholder="********"
-            onChange={this.passwordInputChangeHandler}
-            required />
-        </div>
-        <div className="d-flex justify-content-between align-items-end">
-          <button onClick={this.onSubmitHandler} className="btn btn-info btn-md" type="button">Submit</button>
-          <Link to="/signup" className="text-info">Sign Up here</Link>
-        </div>
-      </Form> 
-    </React.Fragment>
+
+
+      </React.Fragment>
     );
   }
 }

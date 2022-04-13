@@ -10,8 +10,8 @@ router.post('/', (req, res, next) => {
     .then(user => {
         if (user.length>=1){
            return res.status(409).json({  // 409 - request conflict with the current state of the target resource.
-               message: 'User Already Exist'
-           }); 
+                message: 'User Already Exist'
+            });
         }
         else{
             // Create a new User
