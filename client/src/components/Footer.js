@@ -32,7 +32,7 @@ export default function Footer() {
             <div className="col-lg-3 col-md-6 footer-links">
                 <h4>Contact Us</h4>
                 <p>Still have Questions? Go ahead, ask:</p>
-                <i className="fa fa-map-marker" ></i> Chicago, US<br />
+                <i className="fa fa-map-marker" ></i> MMMUT, GKP, INDIA<br />
                 <i className="fa fa-phone" ></i> Phone: +91 7897867722<br />
                 <i className="fa fa-envelope" > </i> Email: alokpatel885@mail.com<br />
                 <form action="/action_page.php" target="_blank">
@@ -51,7 +51,7 @@ export default function Footer() {
                 <strong>Phone:</strong> +91 789 786 7722<br/>
                 <strong>Email:</strong> <a href="mailto:alokpatel885@gmail.com">alokpatel885@gmail.com</a><br/>
                 <strong>Phone:</strong> +91 891 779 3044<br/>
-                <strong>Email:</strong> <a href="mailto:pkg@gmail.com">pkg@gmail.com</a><br/>
+                <strong>Email:</strong> <a href="mailto:pkg@gmail.com">pkgcoder1@gmail.com</a><br/>
                 <strong>Phone:</strong> +91 872 666 8480<br/>
                 <strong>Email:</strong><a href="mailto:shikharinfinity99@gmail.com"> shikharinfinity99@gmail.com</a><br/>
                 </p>

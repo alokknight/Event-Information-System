@@ -16,7 +16,7 @@ class Home extends React.Component {
                 <Navbar/>
                 <Intro/>
                 <About/>
-                {/* <Sponsers /> */}
+                <Sponsers />
                 <FAQ/>
                 <Footer/>
             </div>
