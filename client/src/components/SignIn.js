@@ -15,13 +15,9 @@ class SignIn extends React.Component {
       token: '',
       redirect: localStorage.getItem('userTokenTime') ? true : false
     }
-
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.emailInputChangeHandler = this.emailInputChangeHandler.bind(this);
-    this.passwordInputChangeHandler = this.passwordInputChangeHandler.bind(this);
   }
 
-  onSubmitHandler() {
+  onSubmitHandler=()=> {
     if (!(this.state.email === '' || this.state.password === '')
       && (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email))) {
       axios.post('/signin', {
@@ -48,17 +44,8 @@ class SignIn extends React.Component {
       alert('Please enter valid details');
     }
   }
-
-  emailInputChangeHandler(event) {
-    this.setState({
-      email: event.target.value
-    });
-  }
-
-  passwordInputChangeHandler(event) {
-    this.setState({
-      password: event.target.value
-    });
+  changeHandler=(e)=>{
+    this.setState({[e.target.name]: e.target.value})
   }
 
   render() {
@@ -66,8 +53,6 @@ class SignIn extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
-
-
         <div className="container">
           <div className="d-flex justify-content-center h-100">
             <div className="card">
@@ -83,7 +68,7 @@ class SignIn extends React.Component {
 
               <div className="card-body"></div>
 
-              <Form onSubmit={this.onSubmitHandler.bind(this)}>
+              <Form onSubmit={this.onSubmitHandler}>
                 <h3 className="text-center text-info">Login</h3>
                 <div className="form-group">
                   <label htmlFor="email" className="text-info">Email:</label><br />
@@ -93,7 +78,7 @@ class SignIn extends React.Component {
                     type="email"
                     name="email"
                     placeholder="xyz@domain.com"
-                    onChange={this.emailInputChangeHandler}
+                    onChange={this.changeHandler}
                     required />
                 </div>
                 <div className="form-group">
@@ -104,7 +89,7 @@ class SignIn extends React.Component {
                     type="password"
                     name="password"
                     placeholder="********"
-                    onChange={this.passwordInputChangeHandler}
+                    onChange={this.changeHandler}
                     required />
                 </div>
                 <div className="d-flex justify-content-between align-items-end my-2">
@@ -116,35 +101,12 @@ class SignIn extends React.Component {
                   className="btn float-left login_btn"
                   type="button">Login</button>
               </div>
-
-
-              {/* <div className="input-group form-group">
-                <input type="email"
-                            className="form-control"
-                            placeholder = "Username@gmail.com"
-                            name="username"/>
-              </div>
-
-              <div className="input-group form-group">
-                <input type="password"
-                            className="form-control"
-                            placeholder="password"
-                            name='password'/>
-              </div> */}
-
-
               </Form>
 
 
               <div className="card-footer">
                 <div className="d-flex justify-content-center links">
-                  {/* <button onClick={this.onSubmitHandler}
-                  className="btn btn-info btn-md"
-                  // className="btn float-right login_btn"
-                  type="button">Submit</button> */}
-
                   <Link to="/signup" className="d-flex justify-content-centertext-info">Sign Up</Link>
-                  {/* <a href="/signup">Sign Up</a> */}
                 </div>
 
                 <div className="d-flex justify-content-center">

@@ -16,15 +16,9 @@ class SignUp extends React.Component {
       password: '',
       redirect: localStorage.getItem('userTokenTime') ? true : false
     }
-
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.firstNameInputChangeHandler = this.firstNameInputChangeHandler.bind(this);
-    this.lastNameInputChangeHandler = this.lastNameInputChangeHandler.bind(this);
-    this.emailInputChangeHandler = this.emailInputChangeHandler.bind(this);
-    this.passwordInputChangeHandler = this.passwordInputChangeHandler.bind(this);
   }
 
-  onSubmitHandler (e) {
+  onSubmitHandler=(e)=> {
     e.preventDefault();
     if (!(this.state.firstName === '' || this.state.lastName === '' || this.state.email === '' || this.state.password === '')
       && (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email))) {
@@ -45,33 +39,14 @@ class SignUp extends React.Component {
       alert('Please enter valid details');
     }
   }
-
-  firstNameInputChangeHandler(event) {
+  changeHandler=(e)=>{
     this.setState({
-      firstName: event.target.value
-    });
-  }
-
-  lastNameInputChangeHandler(event) {
-    this.setState({
-      lastName: event.target.value
-    });
-  }
-
-  emailInputChangeHandler(event) {
-    this.setState({
-      email: event.target.value
-    });
-  }
-
-  passwordInputChangeHandler(event) {
-    this.setState({
-      password: event.target.value
-    });
+      [e.target.name]: e.target.value
+    })
   }
 
   render() {
-    if (this.state.redirect) return <Navigate to='/' />
+    if (this.state.redirect) return <Navigate to='/signin' />
     return (
     <React.Fragment>
       <Navbar/>
@@ -83,7 +58,7 @@ class SignUp extends React.Component {
 			</div>
 
 			<div className="card-body">
-      <Form onSubmit={this.onSubmitHandler.bind(this)}>
+      <Form onSubmit={this.onSubmitHandler}>
         <h3 className="text-center text-info">Register</h3>
         <div className="form-group">
           <label htmlFor="first-name" className="text-info">First Name:</label><br />
@@ -93,7 +68,7 @@ class SignUp extends React.Component {
             type="text"
             name="firstName"
             placeholder="First Name"
-            onChange={this.firstNameInputChangeHandler}
+            onChange={this.changeHandler}
             required />
         </div>
         <div className="form-group">
@@ -104,7 +79,7 @@ class SignUp extends React.Component {
             type="text"
             name="lastName"
             placeholder="Last Name"
-            onChange={this.lastNameInputChangeHandler}
+            onChange={this.changeHandler}
             required />
         </div>
         <div className="form-group">
@@ -115,7 +90,7 @@ class SignUp extends React.Component {
             type="email"
             name="email"
             placeholder="xyz@domain.com"
-            onChange={this.emailInputChangeHandler}
+            onChange={this.changeHandler}
             required />
         </div>
         <div className="form-group">
@@ -126,7 +101,7 @@ class SignUp extends React.Component {
             type="password"
             name="password"
             placeholder="********"
-            onChange={this.passwordInputChangeHandler}
+            onChange={this.changeHandler}
             required />
         </div>
         <div className="form-group my-2">
@@ -145,7 +120,6 @@ class SignUp extends React.Component {
                 </div>
 
       </div>
-
 
       </div>
 		</div>
