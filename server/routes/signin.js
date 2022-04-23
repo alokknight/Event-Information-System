@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({path: './config.env'});
 
@@ -30,11 +30,11 @@ router.post('/', (req,res, next) => {
                     firstName: user[0].firstName,
                     lastName: user[0].lastName,
                     email: user[0].email, 
+                    role: user[0].role
                 }, key, { expiresIn: '1h'});
                 return res.status(200).json({
                     message: 'Auth Successful',
                     token: token,
-                    user: user 
                 })
             }
             res.status(401).json({

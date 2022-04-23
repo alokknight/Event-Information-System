@@ -11,6 +11,7 @@ import PNF from './components/404';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import SignOut from './components/SignOut';
+import Protected from './components/Protected';
 // import Navbar from './components/Navbar';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <Route exact path='/signup' element = {<SignUp />} />
       <Route exact path='/signout' element = {<SignOut/>} />
       <Route exact path="/about" element = {<About/>} />
-      <Route exact path="/event/add" element = {<EventAdd />} />
+      <Route exact path="/event/add" element = {<Protected cmp={EventAdd}></Protected>} />
       <Route exact path="/sponsers" element = {<Sponsers />} />
       <Route exact path="/FAQ" element = {<FAQ/>} />
       <Route exact path="#footer" element = {<Footer/>} />

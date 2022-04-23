@@ -1,6 +1,9 @@
 import React from 'react'
+import {decodeToken} from 'react-jwt'
 
 export default function Intro() {
+  const decode = decodeToken(localStorage.getItem('userTokenTime'))
+  console.log(decode)
   return (
 <div>
   <section id="intro">

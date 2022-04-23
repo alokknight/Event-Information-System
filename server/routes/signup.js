@@ -1,7 +1,7 @@
 const express = require('express');
 const User = require('../models/users');
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const mongoose  = require('mongoose');
 
 router.post('/', (req, res, next) => {
@@ -26,7 +26,8 @@ router.post('/', (req, res, next) => {
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,
                         email: req.body.email,
-                        password: hash
+                        password: hash,
+                        role: 'user'
                     });
                     user.save()
                     .then(result => {
