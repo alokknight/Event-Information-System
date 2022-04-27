@@ -1,23 +1,64 @@
 const mongoose = require('mongoose');
+const domPurify = require('dompurify');
+const { JSDOM } = require('jsdom')
+const htmlPurify = domPurify(new JSDOM().window);
+const {stripHtml} = require("string-strip-html");
 
 const eventSchema = new mongoose.Schema({
-      title: {
+  _id: mongoose.Schema.Types.ObjectId,
+      eTitle: {
         type: String,
-        required: true,
+        // required: true,
         trim: true,
       },
-      body: {
+      eName: {
+        type: String,
+        required: true
+      },
+      eBody: {
         type: String,
         required: true,
       },
       snippet: {
         type: String,
       },
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+      // user: {
+      //   type: mongoose.Schema.Types.ObjectId,
+      //   ref: 'User',
+      // },
+      eDate: {
+        type: String,
+        required: true,
       },
-      date: {
+      eVenue: {
+        type: String,
+        required: true
+      },
+      address: {
+        type: String,
+        required: true,
+      },
+      pinCode: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
+      },
+      code: {
+        type: String,
+        required: true,
+      },
+      mobNo: {
+        type: String,
+        required: true,
+      },
+      email: {
         type: String,
         required: true,
       },
@@ -25,9 +66,9 @@ const eventSchema = new mongoose.Schema({
 );
 
 eventSchema.pre('validate', function (next) {
-    if (this.body) {
-      this.body = htmlPurify.sanitize(this.body);
-      this.snippet = stripHtml(this.body.substring(0, 100)).result;
+    if (this.eBody) {
+      this.eBody = htmlPurify.sanitize(this.eBody);
+      this.snippet = stripHtml(this.eBody.substring(0, 100)).result;
       // this.body = stripHtml(this.body).result;
     }
     next();

@@ -17,16 +17,16 @@ import Protected from './components/Protected';
 function App() {
   return (
     <Routes>
-      <Route path="/" element = {<Home />} />
-      <Route exact path="/signin" element = {<SignIn />} />
+      <Route path="/signin" element = {<SignIn />} />
       {/* <Route exact path="/signin" element = {<Login />} /> */}
-      <Route exact path='/signup' element = {<SignUp />} />
-      <Route exact path='/signout' element = {<SignOut/>} />
-      <Route exact path="/about" element = {<About/>} />
-      <Route exact path="/event/add" element = {<Protected cmp={EventAdd}></Protected>} />
-      <Route exact path="/sponsers" element = {<Sponsers />} />
-      <Route exact path="/FAQ" element = {<FAQ/>} />
+      <Route path='/signup' element = {<SignUp />} />
+      <Route path='/signout' element = {<SignOut/>} />
+      <Route path="/about" element = {<About/>} />
+      <Route path="/event/add" element = {<Protected cmp={EventAdd}></Protected>} />
+      <Route path="/sponsers" element = {<Sponsers />} />
+      <Route path="/FAQ" element = {<FAQ/>} />
       {/* <Route exact path="#footer" element = {<Footer/>} /> */}
+      <Route exact path="/" element = {<Home />} />
       <Route path="*" element = {<PNF/> }/>
     </Routes>
 

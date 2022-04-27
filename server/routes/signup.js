@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../models/users');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const mongoose  = require('mongoose');
+const Mongoose  = require('mongoose');
 
 router.post('/', (req, res, next) => {
     User.find({email: req.body.email})
@@ -22,7 +22,7 @@ router.post('/', (req, res, next) => {
                 }
                 else{
                     const user = new User({
-                        _id: new mongoose.Types.ObjectId,
+                        _id: new Mongoose.Types.ObjectId,
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,
                         email: req.body.email,
