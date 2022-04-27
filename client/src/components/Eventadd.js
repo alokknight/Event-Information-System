@@ -135,7 +135,7 @@ class EventAdd extends React.Component {
                     <div className="col-md-15 mb-4 pb-2 ">
 
                         <div className="form-outline">
-                            <input type="date" name="eDate\" onChange={this.changeHandler} required/>
+                            <input type="date" name="eDate" onChange={this.changeHandler} required/>
                         <label className="form-label" htmlFor="form3Examplev3" rows='10'>Event Date</label>
                         </div>
 

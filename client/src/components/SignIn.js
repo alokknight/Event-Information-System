@@ -13,7 +13,9 @@ class SignIn extends React.Component {
       email: '',
       password: '',
       token: '',
-      redirect: localStorage.getItem('userTokenTime') ? true : false
+      redirect: localStorage.getItem('userTokenTime') ? true : false,
+      requestError: '',
+      reqErr: ''
     }
   }
 
@@ -37,11 +39,18 @@ class SignIn extends React.Component {
           redirect: true
         });
       }).catch(err => {
-        console.log(err);
-        alert('Please enter valid details');
+        console.log(err.message);
+        this.setState({
+          requestError: "Please enter valid details"
+        })
+        // console.log(this.state.requestError)
+        // alert('Please enter valid details');
       });
     } else {
-      alert('Please enter valid details');
+      this.setState({
+        requestError: "Please fill all the details"
+      })
+      // alert('Please enter valid details');
     }
   }
   changeHandler=(e)=>{
@@ -92,8 +101,8 @@ class SignIn extends React.Component {
                     onChange={this.changeHandler}
                     required />
                 </div>
-                <div className="d-flex justify-content-between align-items-end my-2">
-
+                <div className="d-flex justify-content-between align-items-end my-2 text-warning">
+                  {this.state.requestError && <p>{this.state.requestError}</p>}
                 </div>
 
                 <div className="card-footer">
