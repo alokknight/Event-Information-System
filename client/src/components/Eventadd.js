@@ -4,6 +4,7 @@ import classicEditor from '@ckeditor/ckeditor5-build-classic';
 import {CKEditor} from '@ckeditor/ckeditor5-react'
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import Footer from "./Footer";
 
 class EventAdd extends React.Component {
     constructor(props){
@@ -280,6 +281,7 @@ class EventAdd extends React.Component {
             
                 </div>
                 </form>
+                <Footer/>
             </div>
         )
     }

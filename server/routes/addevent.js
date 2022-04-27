@@ -4,6 +4,24 @@ const User = require('../models/users')
 const Event = require('../models/event');
 const Mongoose  = require('mongoose');
 
+
+// Show Event Route
+router.get('/:eName', (req,res)=>{
+    Event.findOne({eName: req.params.eName})
+    // .populate('event')
+    .then(data => {
+        console.log(data)
+        res.send(data)
+    })
+    .catch(err =>{
+        console.log(err);
+        return res.status(404).json({
+            message: 'No Event found'
+        })
+    })
+})
+
+// Add Event Route
 router.post('/add', (req,res, next) => {
     User.find({email: req.body.email})
     .exec()
@@ -47,10 +65,12 @@ router.post('/add', (req,res, next) => {
     })
     .catch( err => {
         console.log(err);
-        res.status(422).json({
+        res.status(422).json({ 
             error: err
         })
     })
 })
+
+
 
 module.exports = router;
