@@ -22,7 +22,9 @@ class EventAdd extends React.Component {
             code: '',
             mobNo: '',
             email: '',
-            redirect: false
+            redirect: false,
+            reqErr: '',
+            token:localStorage.getItem("userTokenTime")
         }
     }
     changeHandler=(e)=>{
@@ -36,7 +38,7 @@ class EventAdd extends React.Component {
         this.setState({
             eBody: data
         })
-        console.log(data)
+        // console.log(data)
     }
     onSubmitHandler=(e)=>{
         e.preventDefault();
@@ -71,6 +73,11 @@ class EventAdd extends React.Component {
             code: this.state.code,
             mobNo: this.state.mobNo,
             email: this.state.email
+        },{
+          headers:{
+            'Authorization': `Bearer ${this.state.token}`,
+            'Content-Type': 'application/json'
+          }
         })
         .then((res)=>{
             console.log("Event Response", res);
@@ -81,11 +88,15 @@ class EventAdd extends React.Component {
             
         })
         .catch((err)=>{
-            console.log(err)
-            alert('Please enter your regesitered Email ID')
+            console.log("react first catch", err.message )
+            this.setState({
+              reqErr: 'Not Signed in react'
+            })
+            // alert('Not signed in')
         })
     }
     render(){
+      if(this.state.reqErr) return <Navigate to="/signin"/>
       if(this.state.redirect) return <Navigate to="/"/>
         return(
             <div>

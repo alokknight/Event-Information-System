@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/users')
 const Event = require('../models/event');
 const Mongoose  = require('mongoose');
+const jwt =require('jsonwebtoken')
+const {vat} = require('../middlewares/auth')
 
 
 // Show Event Route
@@ -10,7 +12,7 @@ router.get('/:eName', (req,res)=>{
     Event.findOne({eName: req.params.eName})
     // .populate('event')
     .then(data => {
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
     .catch(err =>{
@@ -22,7 +24,7 @@ router.get('/:eName', (req,res)=>{
 })
 
 // Add Event Route
-router.post('/add', (req,res, next) => {
+router.post('/add', vat, (req,res, next) => {
     User.find({email: req.body.email})
     .exec()
     .then( user => {
@@ -32,7 +34,8 @@ router.post('/add', (req,res, next) => {
             })
         }
         else{
-            console.log(req.body)
+            // console.log(req.body)
+            // console.log(req.headers)
             const event = new Event({
                 _id: new Mongoose.Types.ObjectId,
                 eTitle: req.body.eTitle,

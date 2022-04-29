@@ -26,15 +26,8 @@ class SignIn extends React.Component {
         email: this.state.email,
         password: this.state.password
       }).then(res => {
-        console.log(res);
-        this.setState({
-          token: res.data.token
-        })
-        const data = {
-          token: this.state.token,
-          time: new Date().getTime()
-        }
-        localStorage.setItem('userTokenTime', JSON.stringify(data));
+        // console.log(res.data.token);
+        localStorage.setItem('userTokenTime', res.data.token);
         this.setState({
           redirect: true
         });

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
-// import {decodeToken}from 'react-jwt'
+import {isExpired}from 'react-jwt'
 
 export default function Protected(props) {
     const Cmp = props.cmp;
@@ -10,6 +10,7 @@ export default function Protected(props) {
     const Navigate = useNavigate();
     useEffect(()=>{
         if(!token) Navigate("/signin")
+        if(isExpired(token)) Navigate("/signin")
         // if(decode.role !== "admin") Navigate("/")
     })
   return (

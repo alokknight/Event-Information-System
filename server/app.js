@@ -3,7 +3,6 @@ const app = express(); // a framework of nodejs
 const morgan = require('morgan'); // to log api requests
 const cors = require('cors'); // for req and res bw two different ports
 const bodyParser = require('body-parser');
-const checkAuth = require('./middlewares/auth');
 
 app.use(morgan('dev'));
 app.use(cors());

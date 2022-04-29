@@ -17,7 +17,7 @@ function EventShow({match}) {
   }, [eName])
 
   if(!event) Navigate("*")
-  console.log(event)
+  // console.log(event)
   return (
     <div>
         <Navbar/>
