@@ -13,6 +13,8 @@ import { Routes, Route } from 'react-router-dom';
 import SignOut from './components/SignOut';
 import Protected from './components/Protected';
 import EventShow from './components/EventShow';
+import Dashboard from './components/Dashboard';
+import EventEdit from './components/EventEdit';
 // import Navbar from './components/Navbar';
 
 function App() {
@@ -23,9 +25,11 @@ function App() {
       {/* <Route exact path="/signin" element = {<Login />} /> */}
       <Route path='/signup' element = {<SignUp />} />
       <Route path='/signout' element = {<SignOut/>} />
+      <Route path='/dashboard' element = {<Protected cmp={Dashboard}></Protected>}/>
       <Route path="/about" element = {<About/>} />
       <Route exact path="/event/add" element = {<Protected cmp={EventAdd}></Protected>} />
-      <Route path='/event/:eName' element={<EventShow/>}/>
+      <Route path='/event/edit/:eName' element = {<Protected cmp={EventEdit}></Protected>} />
+      <Route path='/event/:eName' element={<Protected cmp= {EventShow}></Protected>}/>
       <Route path="/sponsers" element = {<Sponsers />} />
       <Route path="/FAQ" element = {<FAQ/>} />
       {/* <Route exact path="#footer" element = {<Footer/>} /> */}

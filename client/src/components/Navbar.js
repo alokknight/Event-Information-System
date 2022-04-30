@@ -30,7 +30,7 @@ class Navbar extends React.Component{
                                 {this.state.loggedIn ?
                                     <React.Fragment>
                                         <NavLink className="nav-item nav-link" to="/" exact>Home</NavLink>
-                                        <NavLink className="nav-item nav-link" to='/event/venue' exact>Event Venue</NavLink>
+                                        <NavLink className="nav-item nav-link" to='/dashboard' exact>Dashboard</NavLink>
                                         <NavLink className="nav-item nav-link" to="/event/add">Add Event</NavLink>
                                         <NavLink className="nav-item nav-link" to="/signout">Sign Out</NavLink>
                                     </React.Fragment>

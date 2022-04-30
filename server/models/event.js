@@ -22,10 +22,6 @@ const eventSchema = new mongoose.Schema({
       snippet: {
         type: String,
       },
-      // user: {
-      //   type: mongoose.Schema.Types.ObjectId,
-      //   ref: 'User',
-      // },
       eDate: {
         type: String,
         required: true,
@@ -61,6 +57,10 @@ const eventSchema = new mongoose.Schema({
       email: {
         type: String,
         required: true,
+      },
+      userEmail: {
+        type: String,
+        required: true
       },
     },{ timestamps: true }
 );

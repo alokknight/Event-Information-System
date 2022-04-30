@@ -19,14 +19,14 @@ const key = process.env.secret_key;
 module.exports ={
     vat: (req,res, next)=>{
         if(req.headers["authorization"]){
-            console.log(req.headers)
+            // console.log(req.headers)
             const authHeader = req.headers["authorization"]
             const token = authHeader.split(' ')[1]
-            console.log("token",token)
+            // console.log("token",token)
             try{
                 const decoded = jwt.verify(token, key);
                 console.log(decoded)
-                req.user = decoded;
+                req.userData = decoded;
                 next();
             }
             catch(err){

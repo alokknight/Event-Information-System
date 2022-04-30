@@ -10,7 +10,10 @@ export default function Protected(props) {
     const Navigate = useNavigate();
     useEffect(()=>{
         if(!token) Navigate("/signin")
-        if(isExpired(token)) Navigate("/signin")
+        if(isExpired(token)) {
+          localStorage.clear();
+          Navigate("/signin")
+        }
         // if(decode.role !== "admin") Navigate("/")
     })
   return (
