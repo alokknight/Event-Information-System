@@ -2,34 +2,41 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-// import { decodeToken } from 'react-jwt'
+import { decodeToken } from 'react-jwt'
 import { useParams } from 'react-router'
 import Footer from './Footer'
 import Navbar from './Navbar'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 
 function EventEdit({match}) {
     const {eName} = useParams();
     // console.log(eName)
-    var token = localStorage.getItem('userTokenTime');
-    // if(token){
-    //     var decoded = decodeToken(token)
-    //     // console.log(decoded)
-    // }
-    // const Navigate = useNavigate();
+    var userToken = localStorage.getItem('userTokenTime');
+    if(userToken){
+        var decoded = decodeToken(userToken)
+        // console.log(decoded)
+    }
+    const Navigate = useNavigate();
     const [Event, setEvent] = useState({})
     // const [redirect, setRedirect] = useState(false);
     useEffect(()=>{
         axios.get(`/event/${eName}`)
-        .then(res => setEvent(res.data))
-        .catch(err => console.log(err))
+        .then(res => {
+          setEvent(res.data)
+          if(res.data.userEmail !== decoded.email)
+            throw 'Unauthorized Access'
+        })
+        .catch(err => {
+          alert(err)
+          Navigate('/')
+          console.log(err)})
     },[eName])
 
     const onSubmitHandler = e =>{
         e.preventDefault();
         axios.put(`/event/${eName}`, Event, {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${userToken}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -71,14 +78,14 @@ function EventEdit({match}) {
                               </div>
 
                   <div className="row">
-                    <div className="col-md-9 mb-4 pb-2">
+                    {/* <div className="col-md-9 mb-4 pb-2">
 
                       <div className="form-outline">
                         <input type='text' id="form3Examplev2" name="eName" className="form-control form-control-lg" onChange={e => setEvent({...Event, eName: e.target.value })} value={Event.eName} required />
                         <label className="form-label" htmlFor="form3Examplev2">Event name</label>
                       </div>
 
-                    </div>
+                    </div> */}
                     <div className="col-md-15 mb-4 pb-2 ">
 
                       <div className="form-outline">

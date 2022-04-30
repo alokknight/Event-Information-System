@@ -107,6 +107,11 @@ router.put('/:eName', vat, async (req,res,next) => {
     try{
         const result = await Event.findOneAndUpdate({userEmail: req.userData.email,  eName: req.params.eName}, req.body)
         .then(result=> {
+            if(!result){
+                return res.status(403).json({
+                    message: 'Forbidden'
+                })
+            }
             return res.status(200).json({
                 message: 'Event Updated'
             })

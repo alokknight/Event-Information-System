@@ -29,15 +29,15 @@ class Navbar extends React.Component{
                             <React.Fragment>
                                 {this.state.loggedIn ?
                                     <React.Fragment>
-                                        <NavLink className="nav-item nav-link" to="/" exact>Home</NavLink>
-                                        <NavLink className="nav-item nav-link" to='/dashboard' exact>Dashboard</NavLink>
+                                        <NavLink className="nav-item nav-link" to="/">Home</NavLink>
+                                        <NavLink className="nav-item nav-link" to='/dashboard'>Dashboard</NavLink>
                                         <NavLink className="nav-item nav-link" to="/event/add">Add Event</NavLink>
                                         <NavLink className="nav-item nav-link" to="/signout">Sign Out</NavLink>
                                     </React.Fragment>
                                     :
                                     <React.Fragment>
-                                        <NavLink className="nav-item nav-link" to="/signin">Sign In</NavLink>
                                         <NavLink className="nav-item nav-link" to="/signup">Sign Up</NavLink>
+                                        <NavLink className="nav-item nav-link" to="/signin">Sign In</NavLink>
                                     </React.Fragment>}
                             </React.Fragment>
                         </div>
