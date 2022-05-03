@@ -22,6 +22,7 @@
     "loopback-connector-mongodb": "^6.1.0",
     "mongoose": "^6.2.1",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.7.4",
     "string-strip-html": "^8.3.0"
   },
   "devDependencies": {

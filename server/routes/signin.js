@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const sendEmail = require('../utils.js/sendEmail')
+const crypto = require('crypto')
+const Token = require('../models/token')
 require('dotenv').config({path: './config.env'});
 
 const key = process.env.secret_key;
@@ -18,13 +21,41 @@ router.post('/', (req,res, next) => {
                 message: 'Authorization Failed'
             })
         }
-        bcrypt.compare(req.body.password, user[0].password, (err,result) => {
+        bcrypt.compare(req.body.password, user[0].password, async (err,result) => {
             if(err){
                 return res.status(401).json({
                     message: 'Auth Failed'
                 });
             }
-            if (result){
+            // Resend Verification link if not verified
+            // console.log("sigin-result",user)
+            // console.log("signin-nodejs-",user[0].verified)
+            if(!user[0].verified){
+                await Token.findOne({userID: user[0]._id})
+                .then(userToken => {
+                    // console.log(userToken)
+                    if(!userToken){
+                        const token = new Token({
+                            userID: user[0]._id,
+                            token:crypto.randomBytes(32).toString("hex")
+                        });
+                        token.save()
+                        const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${token.token}`;
+                        sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
+                    }
+                    else{
+                        const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${userToken.token}`;
+                        sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
+                    }   
+                })
+                .catch(err=>{
+                    console.log("verify token err", err);
+                    res.status(405).json({
+                        message: 'email not verified'
+                    })
+                })
+            }
+            else {
                 const token = jwt.sign({
                     userId: user[0]._id,
                     firstName: user[0].firstName,
