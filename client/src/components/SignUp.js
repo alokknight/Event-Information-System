@@ -30,6 +30,7 @@ class SignUp extends React.Component {
         password: this.state.password
       }).then(res => {
           console.log(res);
+          alert("A verification link is sent to your email address.")
         this.setState({
           redirect: true
         });

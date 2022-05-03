@@ -43,6 +43,7 @@ function EventEdit({match}) {
         .then(res => {
             console.log("Event Update", res)
             alert('Event Updated')
+            Navigate('/')
             // console.log(redirect)
         })
         .catch(err => {

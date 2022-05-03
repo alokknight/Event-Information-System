@@ -15,6 +15,7 @@ import Protected from './components/Protected';
 import EventShow from './components/EventShow';
 import Dashboard from './components/Dashboard';
 import EventEdit from './components/EventEdit';
+import EmailVerify from './components/EmailVerify';
 // import Navbar from './components/Navbar';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Route path="/sponsers" element = {<Sponsers />} />
       <Route path="/FAQ" element = {<FAQ/>} />
       {/* <Route exact path="#footer" element = {<Footer/>} /> */}
+      <Route path='/signup/:id/verify/:token' element={<EmailVerify/>}/>
       <Route path="*" element = {<PNF/> }/>
     </Routes>
 

@@ -32,9 +32,9 @@ class SignIn extends React.Component {
           redirect: true
         });
       }).catch(err => {
-        console.log(err.message);
+        console.log("error", err.message);
         this.setState({
-          requestError: "Please enter valid details"
+          requestError: "Please enter valid details or confirm verification sent to your email address"
         })
         // console.log(this.state.requestError)
         // alert('Please enter valid details');
