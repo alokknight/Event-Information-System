@@ -127,7 +127,7 @@ class SignUp extends React.Component {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                  <a href="/forget_password/">Forgot your password?</a>
+                  <a href="/password/forget">Forgot your password?</a>
                 </div>
 
       </div>

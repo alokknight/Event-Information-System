@@ -10,7 +10,7 @@ const Token = new Schema({
     },
     token:{
         type: String,
-        required: true
+        default: ''
     }
 },{timestamps: true})
 

@@ -79,7 +79,7 @@ router.get("/:id/verify/:token", async(req,res)=>{
             token: req.params.token
         }) 
         if(!token) 
-            return res.status(400).send({
+            return res.status(400).send({ 
                 message: 'Invalid Link'
             })
         console.log("token -", token.token)
@@ -91,7 +91,7 @@ router.get("/:id/verify/:token", async(req,res)=>{
     }
     catch(err){
         res.status(200).send({
-            message: "Internal Server Error"
+            error: "Internal Server Error"
         })
     }
 })

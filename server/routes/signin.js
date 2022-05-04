@@ -18,7 +18,7 @@ router.post('/', (req,res, next) => {
         if(user.length<1){
             // No user found
             return res.status(401).json({  // Unauthorized access - lacks valid authentication
-                message: 'Authorization Failed'
+                message: 'No user found'
             })
         }
         bcrypt.compare(req.body.password, user[0].password, async (err,result) => {
@@ -28,9 +28,7 @@ router.post('/', (req,res, next) => {
                 });
             }
             // Resend Verification link if not verified
-            // console.log("sigin-result",user)
-            // console.log("signin-nodejs-",user[0].verified)
-            if(!user[0].verified){
+            else if(!user[0].verified){
                 await Token.findOne({userID: user[0]._id})
                 .then(userToken => {
                     // console.log(userToken)
@@ -55,7 +53,7 @@ router.post('/', (req,res, next) => {
                     })
                 })
             }
-            else {
+            else if(result) {
                 const token = jwt.sign({
                     userId: user[0]._id,
                     firstName: user[0].firstName,
