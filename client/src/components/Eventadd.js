@@ -12,6 +12,7 @@ class EventAdd extends React.Component {
         this.state={
             eTitle:'',
             eName:'',
+            eOrganiser: '',
             eBody:'',
             eDate:'',
             eVenue: '',
@@ -63,6 +64,7 @@ class EventAdd extends React.Component {
         axios.post('/event/add',{
             eTitle: this.state.eTitle,
             eName: this.state.eName,
+            eOrganiser: this.state.eOrganiser,
             eBody: this.state.eBody,
             eDate: this.state.eDate,
             eVenue: this.state.eVenue,
@@ -131,6 +133,14 @@ class EventAdd extends React.Component {
                       </div>
 
                     </div>
+                    <div className="col-md-9 mb-4 pb-2">
+
+                      <div className="form-outline">
+                        <input type='text' id="form3Examplev2" name="eOrganiser" className="form-control form-control-lg" onChange={this.changeHandler} required />
+                        <label className="form-label" htmlFor="form3Examplev2">Event Organiser/Society</label>
+                      </div>
+
+                  </div>
                     <div className="col-md-15 mb-4 pb-2 ">
 
                       <div className="form-outline">
@@ -258,7 +268,7 @@ class EventAdd extends React.Component {
 
                       <div className="form-outline form-white">
                         <input type="text" name="mobNo" id="form3Examplea8" className="form-control form-control-lg" onChange={this.changeHandler} required/>
-                        <label className="form-label" htmlFor="form3Examplea8">Phone Number</label>
+                        <label className="form-label" htmlFor="form3Examplea8">Contact Number</label>
                       </div>
 
                     </div>
@@ -267,7 +277,7 @@ class EventAdd extends React.Component {
                   <div className="mb-4">
                     <div className="form-outline form-white">
                       <input type="text" name="email" id="form3Examplea9" className="form-control form-control-lg" onChange={this.changeHandler} required/>
-                      <label className="form-label" htmlFor="form3Examplea9">Your Email</label>
+                      <label className="form-label" htmlFor="form3Examplea9">Contact Email</label>
                     </div>
                   </div>
 

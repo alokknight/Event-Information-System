@@ -15,6 +15,10 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
       },
+      eOrganiser: {
+        type: String,
+        required: true
+      },
       eBody: {
         type: String,
         required: true,

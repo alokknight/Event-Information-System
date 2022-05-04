@@ -79,14 +79,14 @@ function EventEdit({match}) {
                               </div>
 
                   <div className="row">
-                    {/* <div className="col-md-9 mb-4 pb-2">
+                    <div className="col-md-9 mb-4 pb-2">
 
                       <div className="form-outline">
-                        <input type='text' id="form3Examplev2" name="eName" className="form-control form-control-lg" onChange={e => setEvent({...Event, eName: e.target.value })} value={Event.eName} required />
-                        <label className="form-label" htmlFor="form3Examplev2">Event name</label>
+                        <input type='text' id="form3Examplev2" name="eOrganiser" className="form-control form-control-lg" onChange={e => setEvent({...Event, eOrganiser: e.target.value })} value={Event.eOrganiser} required />
+                        <label className="form-label" htmlFor="form3Examplev2">Event Organiser/Society</label>
                       </div>
 
-                    </div> */}
+                    </div>
                     <div className="col-md-15 mb-4 pb-2 ">
 
                       <div className="form-outline">
@@ -217,7 +217,7 @@ function EventEdit({match}) {
 
                       <div className="form-outline form-white">
                         <input type="text" name="mobNo" id="form3Examplea8" className="form-control form-control-lg" onChange={e => setEvent({...Event, mobNo: e.target.value })} value={Event.mobNo} required/>
-                        <label className="form-label" htmlFor="form3Examplea8">Phone Number</label>
+                        <label className="form-label" htmlFor="form3Examplea8">Contact Number</label>
                       </div>
 
                     </div>
@@ -226,7 +226,7 @@ function EventEdit({match}) {
                   <div className="mb-4">
                     <div className="form-outline form-white">
                       <input type="text" name="email" id="form3Examplea9" className="form-control form-control-lg" onChange={e => setEvent({...Event, email: e.target.value })} value={Event.email} required/>
-                      <label className="form-label" htmlFor="form3Examplea9">Your Email</label>
+                      <label className="form-label" htmlFor="form3Examplea9">Contact Email</label>
                     </div>
                   </div>
 
