@@ -43,7 +43,7 @@ export default function Esd2() {
                             {
                                 upcomingEvents.map(event => {
                                     return(
-                                        <tr className="inner-box" >
+                                        <tr className="inner-box" key={event.eName} >
                                         <th scope="row">
                                             <div className="event-date">
                                                 {/* <span>{event.eDate}</span> */}
@@ -67,7 +67,7 @@ export default function Esd2() {
                                         </td>
                                         <td>
                                             <div className="r-no">
-                                                <span class=".demo-1 .main h4">{event.eVenue}</span>
+                                                <span className=".demo-1 .main h4">{event.eVenue}</span>
                                             </div>
                                         </td>
                                         <td>

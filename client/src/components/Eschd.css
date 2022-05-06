@@ -56,17 +56,17 @@
 .event-schedule-area .tab-area .tab-content .table tbody td .heading {
     font-size: 16px;
     text-transform: capitalize;
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
     font-weight: 500;
     color: #3dc44f;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
 }
 .event-schedule-area .tab-area .tab-content .table tbody th span,
 .event-schedule-area .tab-area .tab-content .table tbody td span {
     color: #3cb842;
     font-size: 18px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
     display: block;
 }
 .event-schedule-area .tab-area .tab-content .table tbody th span.date,
@@ -74,7 +74,7 @@
     color: #46832e;
     font-size: 14px;
     font-weight: 500;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 .event-schedule-area .tab-area .tab-content .table tbody th p {
     font-size: 14px;
@@ -94,11 +94,11 @@
     margin-bottom: 30px;
 }
 .event-schedule-area-two ul.custom-tab li {
-    margin-right: 70px;
+    margin: 0 auto;
     position: relative;
 }
 .event-schedule-area-two ul.custom-tab li a {
-    color: #bbc0b9;
+    color: #ff9a3b;
     font-size: 25px;
     line-height: 25px;
     font-weight: 600;
@@ -126,7 +126,7 @@
 } */
 
 .event-schedule-area-two .primary-btn {
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .event-schedule-area-two .tab-content .table {
@@ -151,10 +151,11 @@
 }
 .event-schedule-area-two .tab-content .table tbody tr th {
     border: 0;
-    padding: 30px 20px;
+    /* padding: 30px 20px; */
     vertical-align: middle;
 }
 .event-schedule-area-two .tab-content .table tbody tr th .event-date {
+    font-size: large;
     color: #b5e237;
     text-align: center;
 }
@@ -164,7 +165,7 @@
     font-weight: normal;
 }
 .event-schedule-area-two .tab-content .table tbody tr td {
-    padding: 30px 20px;
+    padding: 20px 20px;
     vertical-align: middle;
 }
 .event-schedule-area-two .tab-content .table tbody tr td .r-no span {
@@ -240,4 +241,16 @@
 	line-height: 20px;
 	font-weight: normal;
 	font-family: 'Orienta', sans-serif;
+}
+
+@media(max-width:567px){
+    .event-schedule-area-two .nav-item .nav-link{
+        font-size: medium;
+    }
+    .event-schedule-area-two tr.inner-box{
+        padding: 0;
+    }
+    .event-date p, .event-img h4, .event-wrap h3, .r-no span, .primary-btn button{
+        font-size: medium;
+    }
 }
