@@ -1,5 +1,6 @@
 import React from 'react'
 import {decodeToken} from 'react-jwt'
+import { Link } from 'react-router-dom'
 
 export default function Intro() {
   const token = localStorage.getItem('userTokenTime')
@@ -12,7 +13,7 @@ export default function Intro() {
       <h3 className="text-light">Welcome! {(token) ? decode.firstName: ''} </h3>
       <h1 className="mb-4 pb-0">Find<br/><span>and Add</span> Upcoming Events</h1>
       <p className="mb-4 pb-0">One Website for all the Nearby Events</p>
-      <a href="/event/add" className="btn btn-info">Add Event</a>
+      <Link to='/event/add'className='btn btn-info' >Add Event</Link>
       <a href="#about" className="about-btn scrollto">About The Event</a>
     </div>
   </section>
