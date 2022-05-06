@@ -8,7 +8,7 @@ export default function Esd1() {
     const [todayEvents, setTodayEvents] = useState([])
 
     useEffect(()=>{
-        axios.get('/event/today')
+        axios.get('/api/event/today')
         .then(res => setTodayEvents(res.data))
         .catch(err => console.log(err.error))
     },[])

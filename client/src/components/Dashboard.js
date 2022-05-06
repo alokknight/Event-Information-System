@@ -14,7 +14,7 @@ function Dashboard() {
         edit: ''
     });
     useEffect(()=>{
-        axios.get('/event',{
+        axios.get('/api/event',{
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'content-type': 'application/json'

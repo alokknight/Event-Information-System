@@ -9,7 +9,7 @@ function EventShow({match}) {
   const [event, setEvent] = useState({})
   const Navigate = useNavigate();
   useEffect(()=>{
-    axios.get(`/event/${eName}`)
+    axios.get(`/api/event/${eName}`)
     .then(res => setEvent(res.data))
     .catch(err =>{
       console.log(err, 'Event not found react')
@@ -26,10 +26,10 @@ function EventShow({match}) {
         <div dangerouslySetInnerHTML={{__html: event.eBody}}></div>
         date: {event.eDate}<br></br>
         Venue: {event.eVenue}<br></br>
-        Address: {event.address}<br></br>
+        {/* Address: {event.address}<br></br>
         pinCode: {event.pinCode}<br></br>
         city: {event.city}<br></br>
-        country: {event.country}<br></br>
+        country: {event.country}<br></br> */}
         Contact mobNo: {event.code}
         {event.mobNo}<br></br>
         Contact email: {event.email}<br></br>

@@ -9,7 +9,9 @@ class PNF extends React.Component {
             <div>
                 <Navbar/>
                 <h1>Please Enter Right Url</h1>
-                <Link to='/'>Home</Link>
+                <button className="btn btn-primary">
+                <Link to='/' className="text-light" >Home</Link>
+                </button>
             </div>
         )
     }

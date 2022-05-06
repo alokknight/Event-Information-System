@@ -13,7 +13,7 @@ export default function Esd3() {
     const [pastEvents, setPastEvents] = useState([])
 
     useEffect(()=>{
-        axios.get('/event/past')
+        axios.get('/api/event/past')
         .then(res => setPastEvents(res.data))
         .catch(err => console.log(err.error))
     },[])

@@ -9,7 +9,7 @@ function EmailVerify() {
     useEffect(()=>{
         const verifyEmailUrl = async()=>{
             try{
-                const url = `/signup/${param.id}/verify/${param.token}`
+                const url = `/api/signup/${param.id}/verify/${param.token}`
                 const {data} = await axios.get(url);
                 console.log(data)
                 setValidUrl(true)

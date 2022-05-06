@@ -11,7 +11,7 @@ function ChangePassword() {
 
   const onSubmitHandler = e =>{
     e.preventDefault();
-    axios.put(`/password/reset/${id}/${token}`, ChangePass)
+    axios.put(`/api/password/reset/${id}/${token}`, ChangePass)
     .then(res => {
       alert('Password has been changed successfully')
       Navigate("/signin");

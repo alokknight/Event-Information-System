@@ -34,7 +34,7 @@ function EventEdit({match}) {
 
     const onSubmitHandler = e =>{
         e.preventDefault();
-        axios.put(`/event/${eName}`, Event, {
+        axios.put(`/api/event/${eName}`, Event, {
             headers: {
                 'Authorization': `Bearer ${userToken}`,
                 'Content-Type': 'application/json'

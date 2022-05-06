@@ -61,7 +61,7 @@ class EventAdd extends React.Component {
         //       email: this.state.email
         //   })
         // })
-        axios.post('/event/add',{
+        axios.post('/api/event/add',{
             eTitle: this.state.eTitle,
             eName: this.state.eName,
             eOrganiser: this.state.eOrganiser,

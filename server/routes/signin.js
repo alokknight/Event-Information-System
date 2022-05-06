@@ -17,20 +17,20 @@ router.post('/', (req,res, next) => {
     .then(user => {
         if(user.length<1){
             // No user found
-            return res.status(401).json({  // Unauthorized access - lacks valid authentication
+            res.status(401).send({  // Unauthorized access - lacks valid authentication
                 message: 'No user found'
             })
         }
         bcrypt.compare(req.body.password, user[0].password, async (err,result) => {
             if(err){
-                return res.status(401).json({
-                    message: 'Auth Failed'
+                res.status(403).send({
+                    message: 'Forbidden: Auth Failed'
                 });
             }
             // Resend Verification link if not verified
             else if(!user[0].verified){
                 await Token.findOne({userID: user[0]._id})
-                .then(userToken => {
+                .then(async(userToken) => {
                     // console.log(userToken)
                     if(!userToken){
                         const token = new Token({
@@ -38,18 +38,22 @@ router.post('/', (req,res, next) => {
                             token:crypto.randomBytes(32).toString("hex")
                         });
                         token.save()
-                        const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${token.token}`;
-                        sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
                     }
-                    else{
-                        const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${userToken.token}`;
-                        sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
-                    }   
+                    const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${userToken.token}`;
+                    await sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
+                    .then(()=>{
+                        res.status(201).send({
+                            message: 'Email has been sent to reset the password'
+                        })
+                    })
+                    .catch(err=>{
+                        res.status(500).send({error: "Internal Server Error"})
+                    })
                 })
                 .catch(err=>{
-                    console.log("verify token err", err);
-                    res.status(405).json({
-                        message: 'email not verified'
+                    console.log("Internal Server Error", err);
+                    res.status(500).send({
+                        error: 'Internal Server Error'
                     })
                 })
             }
@@ -61,19 +65,19 @@ router.post('/', (req,res, next) => {
                     email: user[0].email, 
                     role: user[0].role
                 }, key, { expiresIn: '48h'});
-                return res.status(200).json({
+                res.status(200).send({
                     message: 'Auth Successful',
                     token: token,
                 })
             }
-            res.status(401).json({
+            res.status(401).send({
                 message: 'Auth Failed'
             })
         })
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({
+        res.status(500).send({
             error: err
         })
     })

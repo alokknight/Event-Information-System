@@ -15,10 +15,10 @@ app.use(bodyParser.json()); //A middleware extracts the entire body portion of a
 
 // Routes
 // app.use('/', require('./routes/home'));
-app.use('/signup', require('./routes/signup'));
-app.use('/signin', require('./routes/signin'));
-app.use('/event', require('./routes/addevent'));
-app.use('/password', require('./routes/forgetpassword'))
+app.use('/api/signup', require('./routes/signup'));
+app.use('/api/signin', require('./routes/signin'));
+app.use('/api/event', require('./routes/addevent'));
+app.use('/api/password', require('./routes/forgetpassword'))
 
 
 //Config Path

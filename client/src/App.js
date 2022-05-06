@@ -35,7 +35,7 @@ function App() {
       <Route path='/dashboard' element = {<Protected cmp={Dashboard}></Protected>}/>
       <Route exact path="/event/add" element = {<Protected cmp={EventAdd}></Protected>} />
       <Route path='/event/edit/:eName' element = {<Protected cmp={EventEdit}></Protected>} />
-      <Route path='/event/:eName' element={<Protected cmp= {EventShow}></Protected>}/>
+      <Route path='/event/:eName' element={<EventShow/>}/>
       <Route path='/signup/:id/verify/:token' element={<EmailVerify/>}/>
       <Route path='/password/forgot' element={<ForgetPassword/>}/>
       <Route path='/password/reset/:id/:token' element={<ChangePassword/>}/>

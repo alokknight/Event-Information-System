@@ -10,7 +10,7 @@ function ForgetPassword() {
   const Navigate = useNavigate();
   const onSubmitHandler= e=>{
     e.preventDefault();
-    axios.post('/password/forgot', email)
+    axios.post('/api/password/forgot', email)
     .then(res=>{
       alert('Reset Link has been sent to your mail.')
       Navigate("/signin")
