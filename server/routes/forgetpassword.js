@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 const sendEmail = require('../utils.js/sendEmail');
 require('dotenv').config({path: './config.env'})
  
-router.post('/forget', async(req,res)=>{
+router.post('/forgot', async(req,res)=>{
     console.log(req.body)
     User.findOne({email: req.body.email})
     .then(async(user)=>{

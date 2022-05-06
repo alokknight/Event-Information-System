@@ -112,7 +112,7 @@ class SignIn extends React.Component {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                <Link to="/password/forget">Forgot your password?</Link>
+                <Link to="/password/forgot">Forgot your password?</Link>
                 </div>
               </div>
 
