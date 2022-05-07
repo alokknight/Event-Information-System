@@ -9,8 +9,8 @@ const Token = require('../models/token')
 require('dotenv').config({path: './config.env'});
 
 
-router.post('/', async(req, res, next) => {
-    await User.find({email: req.body.email})
+router.post('/', (req, res, next) => {
+    User.find({email: req.body.email})
     .exec()
     .then(user => {
         if (user.length>=1){
@@ -20,7 +20,7 @@ router.post('/', async(req, res, next) => {
         }
         else{
             // Create a new User
-         bcrypt.hash(req.body.password, 10, async(err, hash) => {
+            bcrypt.hash(req.body.password, 10, async(err, hash) => {
                 if(err){
                     console.log(err);
                     return res.status(500).json({error: err}); // Internal Server Error
@@ -34,25 +34,30 @@ router.post('/', async(req, res, next) => {
                         password: hash,
                         verified: false,
                         role: 'user'
-                    });
+                    })
                     user.save()
-                    .then(result => {
+                    .then(async(result) => {
                         // console.log(result);
-                        res.status(201).json({ // Created- indicates request has succeeded
-                            message: 'An email sent to your account please verify nodejs'
+                        const token = new Token({
+                            userID: user._id,
+                            token:crypto.randomBytes(32).toString("hex")
+                        });
+                        token.save()
+                        console.log(token.token)
+                        const url = `${process.env.BASE_URL}signup/${user._id}/verify/${token.token}`;
+                        sendEmail(user.firstName, user.email, "Verify your account", url)
+                        .then(()=>{
+                            return res.status(201).json({
+                                message: 'An Email has been sent to verify the account'
+                            })
+                        })
+                        .catch(err=>{
+                            return res.status(500).json({error: "Internal Server Error"})
                         })
                     })
-                    const token = new Token({
-                        userID: user._id,
-                        token:crypto.randomBytes(32).toString("hex")
-                    });
-                    token.save()
-                    console.log(token.token)
-                    const url = `${process.env.BASE_URL}signup/${user._id}/verify/${token.token}`;
-                    await sendEmail(user.firstName, user.email, "Verify your account", url)
                     .catch(err => {
                         console.log(err);
-                        res.status(500).json({
+                        return res.status(500).json({
                             error:err
                         })
                     });
@@ -62,7 +67,7 @@ router.post('/', async(req, res, next) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(422).json({ // Unable to process the request entity
+        return res.status(422).json({ // Unable to process the request entity
             error:err
         })
     })
@@ -72,25 +77,25 @@ router.post('/', async(req, res, next) => {
 router.get("/:id/verify/:token", async(req,res)=>{
     try{
         const user = await User.findOne({_id: req.params.id})
-        if(!user) return res.status(400).send({message: 'Invalid Link'})
-        console.log("USer N-", user)
+        if(!user) return res.status(400).json({message: 'Invalid Link'})
+        // console.log("USer N-", user)
         const token = await Token.findOne({
             userID: user._id,
             token: req.params.token
         }) 
         if(!token) 
-            return res.status(400).send({ 
+            return res.status(400).json({ 
                 message: 'Invalid Link'
             })
         console.log("token -", token.token)
         await User.updateOne({_id: user._id},{$set:{ verified: true}})
         await Token.deleteOne({userID: user._id})
-        res.status(200).send({
+        return res.status(200).json({
             message: "Email verified successfully"
         })
     }
     catch(err){
-        res.status(200).send({
+        return res.status(200).json({
             error: "Internal Server Error"
         })
     }

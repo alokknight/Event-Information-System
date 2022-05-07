@@ -17,67 +17,72 @@ router.post('/', (req,res, next) => {
     .then(user => {
         if(user.length<1){
             // No user found
-            res.status(401).send({  // Unauthorized access - lacks valid authentication
+            return res.status(401).json({  // Unauthorized access - lacks valid authentication
                 message: 'No user found'
             })
         }
-        bcrypt.compare(req.body.password, user[0].password, async (err,result) => {
-            if(err){
-                res.status(403).send({
-                    message: 'Forbidden: Auth Failed'
-                });
-            }
-            // Resend Verification link if not verified
-            else if(!user[0].verified){
-                await Token.findOne({userID: user[0]._id})
-                .then(async(userToken) => {
-                    // console.log(userToken)
-                    if(!userToken){
-                        const token = new Token({
-                            userID: user[0]._id,
-                            token:crypto.randomBytes(32).toString("hex")
-                        });
-                        token.save()
-                    }
-                    const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${userToken.token}`;
-                    await sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
-                    .then(()=>{
-                        res.status(201).send({
-                            message: 'Email has been sent to reset the password'
+        else{
+            bcrypt.compare(req.body.password, user[0].password, (err,result) => {
+                if(err){
+                    return res.status(403).json({
+                        message: 'Forbidden: Auth Failed'
+                    });
+                }
+                // Resend Verification link if not verified
+                else if(!user[0].verified){
+                    Token.findOne({userID: user[0]._id})
+                    .then((userToken) => {
+                        // console.log(userToken)
+                        if(!userToken){
+                            const token = new Token({
+                                userID: user[0]._id,
+                                token:crypto.randomBytes(32).toString("hex")
+                            });
+                            token.save()
+                        }
+                        const url = `${process.env.BASE_URL}signup/${user[0]._id}/verify/${userToken.token}`;
+                        sendEmail(user[0].firstName, user[0].email, "Verify your account", url)
+                        .then(()=>{
+                            return res.status(201).json({
+                                message: 'An Email has been sent to verify the account'
+                            })
+                        })
+                        .catch(err=>{
+                            return res.status(500).json({error: "Internal Server Error"})
                         })
                     })
                     .catch(err=>{
-                        res.status(500).send({error: "Internal Server Error"})
+                        console.log("Internal Server Error", err);
+                        return res.status(500).json({
+                            error: 'Internal Server Error'
+                        })
                     })
-                })
-                .catch(err=>{
-                    console.log("Internal Server Error", err);
-                    res.status(500).send({
-                        error: 'Internal Server Error'
+                }
+                else if(result) {
+                    const token = jwt.sign({
+                        userId: user[0]._id,
+                        firstName: user[0].firstName,
+                        lastName: user[0].lastName,
+                        email: user[0].email, 
+                        role: user[0].role
+                    }, key, { expiresIn: '48h'});
+                    return res.status(200).json({
+                        message: 'Auth Successful',
+                        token: token,
                     })
-                })
-            }
-            else if(result) {
-                const token = jwt.sign({
-                    userId: user[0]._id,
-                    firstName: user[0].firstName,
-                    lastName: user[0].lastName,
-                    email: user[0].email, 
-                    role: user[0].role
-                }, key, { expiresIn: '48h'});
-                res.status(200).send({
-                    message: 'Auth Successful',
-                    token: token,
-                })
-            }
-            res.status(401).send({
-                message: 'Auth Failed'
+                }
+                else{
+                    return res.status(403).json({
+                        message: 'Auth Failed'
+                    })
+                }
             })
-        })
+        }
+        
     })
     .catch(err => {
         console.log(err);
-        res.status(500).send({
+        return res.status(500).json({
             error: err
         })
     })

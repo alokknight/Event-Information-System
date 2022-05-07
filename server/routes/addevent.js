@@ -12,7 +12,7 @@ router.get('/', vat, (req, res, next)=>{
     User.find({userEmail: req.userData.email})
     .then((user) => {
         if(user.length<1){
-            return res.status(409).send({
+            return res.status(409).json({
                 message: 'Invalid User'
             })
         }
@@ -21,11 +21,11 @@ router.get('/', vat, (req, res, next)=>{
             .then(data => {
                 // console.log(data)
                 // console.log('events fetched')
-                res.send(data)
+                res.json(data)
             })
             .catch(err => {
                 console.log("err",err)
-                res.status(404).send({
+                return res.status(404).json({
                     message: 'No events for this user'
                 })
             })
@@ -44,10 +44,10 @@ router.get('/today', async(req,res)=>{
     Event.find({eDate: dt}).sort('eDate')
     .then(data=>{
         // console.log(data)
-        res.status(200).send(data)
+        return res.status(200).json(data)
     })
     .catch(err => {
-        res.status(500).send({
+        return res.status(500).json({
             error: 'Internal Server Error'
         })
     })
@@ -62,11 +62,11 @@ router.get('/upcoming', async(req,res)=>{
     Event.find({eDate: {$gt: dt}}).sort('eDate')
     .then(data=>{
         // console.log(data)
-        res.send(data)
+        res.json(data)
     })
     .catch(err => {
         console.log("No upcoming's event")
-        res.status(400).send({
+        return res.status(400).json({
             message: 'No event for Upcoming'
         })
     })
@@ -81,11 +81,11 @@ router.get('/past', (req,res)=>{
     Event.find({eDate: {$lt: dt}}).sort({eDate: -1}).limit(10)
     .then(data=>{
         // console.log(data)
-        res.send(data)
+        res.json(data)
     })
     .catch(err => {
         console.log("No past's event")
-        res.status(400).send({
+        return res.status(400).json({
             message: 'No event for Past'
         })
     })
@@ -97,11 +97,11 @@ router.get('/:eName', (req,res)=>{
     // .populate('event')
     .then(data => {
         // console.log(data)
-        res.send(data)
+        res.json(data)
     })
     .catch(err =>{
         console.log(err);
-        return res.status(404).send({
+        return res.status(404).json({
             message: 'No Event found'
         })
     })
@@ -113,7 +113,7 @@ router.post('/add', vat, (req,res, next) => {
     .exec()
     .then( user => {
         if(user.length<1){
-            return res.status(409).send({
+            return res.status(409).json({
                 message: 'Invalid User'
             })
         }
@@ -140,13 +140,13 @@ router.post('/add', vat, (req,res, next) => {
             event.save()
             .then(result =>{
                 console.log(result);
-                return res.status(201).send({
+                return res.status(201).json({
                     message: 'Event Added'
                 })
             })
             .catch(err=>{
                 console.log(err);
-                res.status(500).send({
+                return res.status(500).json({
                     error:err
                 })
             })
@@ -154,7 +154,7 @@ router.post('/add', vat, (req,res, next) => {
     })
     .catch( err => {
         console.log(err);
-        res.status(422).send({ 
+        return res.status(422).json({ 
             error: err
         })
     })
@@ -163,27 +163,22 @@ router.post('/add', vat, (req,res, next) => {
 // Update Event Route
 router.put('/:eName', vat, async (req,res,next) => {
     try{
-        const result = await Event.findOneAndUpdate({userEmail: req.userData.email,  eName: req.params.eName}, req.body)
+        Event.findOneAndUpdate({userEmail: req.userData.email,  eName: req.params.eName}, req.body)
         .then(result=> {
-            if(!result){
-                return res.status(403).send({
-                    message: 'Forbidden'
-                })
-            }
-            return res.status(200).send({
+            return res.status(200).json({
                 message: 'Event Updated'
             })
         })
         .catch(err => {
             console.log(err)
-            return res.status(403).send({
+            return res.status(403).json({
                 message: 'Forbidden'
             })
         })
     }
     catch(err){
         console.log(err)
-        return res.status(403).send({
+        return res.status(403).json({
             message: 'Forbidden'
         })
     }
@@ -192,22 +187,22 @@ router.put('/:eName', vat, async (req,res,next) => {
 // Delete Event Route 
 router.delete('/:eName', vat, async (req,res,next)=>{
     try{
-        const result = await Event.deleteOne({userEmail: req.userData.email,  eName: req.params.eName}, req.body)
+        Event.deleteOne({userEmail: req.userData.email,  eName: req.params.eName}, req.body)
         .then(result=> {
-            return res.status(200).send({
+            return res.status(200).json({
                 message: 'Event Deleted'
             })
         })
         .catch(err => {
             console.log(err)
-            return res.status(403).send({
+            return res.status(403).json({
                 message: 'Forbidden'
             })
         })
     }
     catch(err){
         console.log(err)
-        return res.status(403).send({
+        return res.status(403).json({
             message: 'Forbidden'
         })
     }

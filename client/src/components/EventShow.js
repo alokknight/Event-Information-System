@@ -16,23 +16,28 @@ function EventShow({match}) {
     })
   }, [eName])
 
-  if(!event) Navigate("*")
   // console.log(event)
+
+  if(!event) Navigate("*")
   return (
     <div>
         <Navbar/>
-        <p>{event.eTitle}</p>
-        <h1>{event.eName}</h1>
-        <div dangerouslySetInnerHTML={{__html: event.eBody}}></div>
-        date: {event.eDate}<br></br>
-        Venue: {event.eVenue}<br></br>
-        {/* Address: {event.address}<br></br>
-        pinCode: {event.pinCode}<br></br>
-        city: {event.city}<br></br>
-        country: {event.country}<br></br> */}
-        Contact mobNo: {event.code}
-        {event.mobNo}<br></br>
-        Contact email: {event.email}<br></br>
+        {event ? (
+          <>
+            <p>{event.eTitle}</p>
+            <h1>{event.eName}</h1>
+            <div dangerouslySetInnerHTML={{__html: event.eBody}}></div>
+            date: {event.eDate}<br></br>
+            Venue: {event.eVenue}<br></br>
+            {/* Address: {event.address}<br></br>
+            pinCode: {event.pinCode}<br></br>
+            city: {event.city}<br></br>
+            country: {event.country}<br></br> */}
+            Contact mobNo: {event.code}
+            {event.mobNo}<br></br>
+            Contact email: {event.email}<br></br>
+        </>
+        ): null}
         <Footer/>
     </div>
   )

@@ -20,11 +20,11 @@ function EventEdit({match}) {
     const [Event, setEvent] = useState({})
     // const [redirect, setRedirect] = useState(false);
     useEffect(()=>{
-        axios.get(`/event/${eName}`)
+        axios.get(`/api/event/${eName}`)
         .then(res => {
           setEvent(res.data)
           if(res.data.userEmail !== decoded.email)
-            throw 'Unauthorized Access'
+            throw new Error ('Unauthorized Access')
         })
         .catch(err => {
           alert(err)
