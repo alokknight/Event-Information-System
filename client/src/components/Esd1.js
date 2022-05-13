@@ -21,7 +21,7 @@ export default function Esd1() {
             <div className="tab-pane fade active show " id="today" role="tabpanel" >
                 <div className="table-responsive" >
                     <table className="table" >
-                        <thead > 
+                        <thead >
                             <tr style={{backgroundcolor:'black'}}>
                                 <th className="text-center" scope="col">Date</th>
                                 <th scope="col">Organiser</th>
@@ -64,7 +64,7 @@ export default function Esd1() {
                                         <td>
                                             <div className="primary-btn">
                                                 <Link to={`/event/${event.eName}`}>
-                                                    <button className='btn btn-primary'>Read More</button>
+                                                    <button className='btn transonclick btn-primary'>Read More</button>
                                                 </Link>
                                             </div>
                                         </td>

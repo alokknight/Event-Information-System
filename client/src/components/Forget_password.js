@@ -25,12 +25,7 @@ function ForgetPassword() {
        <Navbar />
         <div className="container">
           <div className="d-flex justify-content-center h-100">
-            <div className="card">
-              <div className="card-header">
-                {/* <img style= "align:center"; src="{{request.scheme}}://{{request.META.HTTP_HOST}}/static/img/smartservelogo.jpg" alt="EMS"width="50" height="50"></img> */}
-
-                {/* <h2>Event ManageMent</h2> */}
-              </div>
+            <div className="signincard">
 
               <div className="card-body"></div>
 
@@ -53,21 +48,14 @@ function ForgetPassword() {
                 </div>
 
                 <div className="card-footer">
-                <button type='submit' className="btn float-left login_btn">Send Request</button>
-              </div>
+                  <button type='submit' className="btn float-left login_btn transonclick">Send Request</button>
+
+                  <div className="d-flex justify-content-center transonclick">
+                    <Link style={{ textDecoration: 'none', color:"#ffff"}} className="nav-item nav-link" to="/signin">Sign In</Link>
+                  </div>
+                </div>
               </Form>
 
-
-              <div className="card-footer">
-                <div className="d-flex justify-content-center links">
-                  <Link className="nav-item nav-link" to="/signup">Sign Up</Link>
-                  {/* <Link to="/signup" className="d-flex justify-content-centertext-info">Sign Up</Link> */}
-                </div>
-
-                <div className="d-flex justify-content-center">
-                  <Link className="nav-item nav-link" to="/signin">Sign In</Link>
-                </div>
-              </div>
 
             </div>
           </div>

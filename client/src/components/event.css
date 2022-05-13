@@ -1,0 +1,74 @@
+
+.verti-timeline {
+    border-left: 3px dashed #e9ecef;
+    margin: 0 10px;
+}
+.verti-timeline .event-list {
+    position: relative;
+    padding: 40px 15px 40px;
+    border-top: 3px solid #e9ecef;
+}
+.verti-timeline .event-list .event-date {
+    position: absolute;
+    right: 0;
+    top: -2px;
+    padding: 12px;
+    color: #fff;
+    border-radius: 0 0 7px 7px;
+    text-align: center;
+}
+.verti-timeline .event-list .event-content {
+    position: relative;
+    border: 2px solid #e9ecef;
+    border-radius: 7px;
+    text-align: center;
+}
+.verti-timeline .event-list .event-content::before {
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 75%;
+    top: -42px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-left: 12px double #e9ecef;
+    border-right: 12px double #e9ecef;
+}
+.verti-timeline .event-list .timeline-icon {
+    position: absolute;
+    left: -14px;
+    top: -10px;
+}
+.verti-timeline .event-list .timeline-icon i {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 20px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+}
+.verti-timeline .event-list:last-child {
+    padding-bottom: 0;
+}
+@media (min-width: 769px) {
+    .verti-timeline {
+        margin: 0 60px;
+    }
+    .verti-timeline .event-list {
+        padding: 40px 90px 60px 40px;
+    }
+}
+@media (max-width: 576px) {
+    .verti-timeline .event-list .event-date {
+        right: -20px;
+    }
+}
+.eventcard {
+    border: none;
+    margin-bottom: 24px;
+    -webkit-box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+    box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+}

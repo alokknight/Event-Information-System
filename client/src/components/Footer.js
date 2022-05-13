@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 export default function Footer() {
     return (
         <>
@@ -11,10 +11,7 @@ export default function Footer() {
             <div className="row">
 
             <div className="col-lg-3 col-md-6 footer-info">
-                <img src={require("./Images/castle.png")} alt="icon1"/>&nbsp; text1alok <br/>
-                <img src={require("./Images/castle.png")} alt="icon1"/>&nbsp; text1alok <br/>
-                <img src={require("./Images/castle.png")} alt="icon1"/>&nbsp; text1alok <br/>
-                <img src={require("./Images/castle.png")} alt="icon1"/>&nbsp; text1alok <br/>
+                <img src={require("./Images/castle.png")} alt="icon1"/>&nbsp; Event Website<br/>
                 <p>Website to show details of all events.</p>
             </div>
 
@@ -30,7 +27,8 @@ export default function Footer() {
             </div>
 
             <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Contact Us</h4>
+                {/* <h4></h4> */}
+                <h4><Link to="/help" style={{ textDecoration: 'none', color:"#ffff"}}>Contact Us</Link></h4>
                 <p>Still have Questions? Go ahead, ask:</p>
                 <i className="fa fa-map-marker" ></i> MMMUT, GKP, INDIA<br />
                 <i className="fa fa-phone" ></i> Phone: +91 7897867722<br />
@@ -39,7 +37,7 @@ export default function Footer() {
                     <p><input className="input border" type="text" placeholder="Name" required name="Name" /></p>
                     <p><input className="input border" type="text" placeholder="Email" required name="Email" /></p>
                     <p><input className="input border" type="text" placeholder="Message" required name="Message" /></p>
-                    <button type="submit" className="button green third">Send a Message</button>
+                    <button type="submit" className="btn green third">Send a Message</button>
                 </form>
             </div>
 
@@ -57,11 +55,11 @@ export default function Footer() {
                 </p>
 
                 <div className="social-links">
-                <a href="https://www.codeworld.ml" className="twitter"><i className="fa fa-twitter"></i></a>
-                <a href="https://www.codeworld.ml" className="facebook"><i className="fa fa-facebook"></i></a>
-                <a href="https://www.codeworld.ml" className="instagram"><i className="fa fa-instagram"></i></a>
-                <a href="https://www.codeworld.ml" className="google-plus"><i className="fa fa-google-plus"></i></a>
-                <a href="https://www.codeworld.ml" className="linkedin"><i className="fa fa-linkedin"></i></a>
+                <a href="https://www.codeworld.ml" className="twitter"> <i className="fa fa-twitter rotate360"></i></a>
+                <a href="https://www.codeworld.ml" className="facebook"><i className="fa fa-facebook rotate360"></i></a>
+                <a href="https://www.codeworld.ml" className="instagram"><i className="fa fa-instagram rotate360"></i></a>
+                <a href="https://www.codeworld.ml" className="google-plus"><i className="fa fa-google-plus rotate360"></i></a>
+                <a href="https://www.codeworld.ml" className="linkedin"><i className="fa fa-linkedin rotate360"></i></a>
                 </div>
 
             </div>
@@ -90,17 +88,3 @@ export default function Footer() {
 </>
     )
 }
-            // Contact Section 
-            <div className="container" id="contact">
-                <h2>Contact</h2>
-                <i className="fa fa-map-marker" ></i> Chicago, US<br />
-                <i className="fa fa-phone" ></i> Phone: +91 7897867722<br />
-                <i className="fa fa-envelope" > </i> Email: alokpatel885@mail.com<br />
-                <p>Still have any Questions? Go ahead, ask them:</p>
-                <form action="/action_page.php" target="_blank">
-                    <p><input className="input border" type="text" placeholder="Name" required name="Name" /></p>
-                    <p><input className="input border" type="text" placeholder="Email" required name="Email" /></p>
-                    <p><input className="input border" type="text" placeholder="Message" required name="Message" /></p>
-                    <button type="submit" className="button green third">Send a Message</button>
-                </form>
-            </div>

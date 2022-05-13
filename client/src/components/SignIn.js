@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
-
+import './signin.css';
 import Form from './Form';
 import Navbar from './Navbar';
 
@@ -55,16 +55,17 @@ class SignIn extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
+        <div>
         <div className="container">
           <div className="d-flex justify-content-center h-100">
-            <div className="card">
-              <div className="card-header">
+            <div className="signincard">
+              <div className="signincard-header">
                 {/* <img style= "align:center"; src="{{request.scheme}}://{{request.META.HTTP_HOST}}/static/img/smartservelogo.jpg" alt="EMS"width="50" height="50"></img> */}
-                <div className="d-flex justify-content-end social_icon">
+                {/* <div className="d-flex justify-content-end social_icon">
                   <span><i className="fa fa-facebook-square"></i></span>
                   <span><i className="fa fa-google-plus-square"></i></span>
                   <span><i className="fa fa-twitter-square"></i></span>
-                </div>
+                </div> */}
                 {/* <h2>Event ManageMent</h2> */}
               </div>
 
@@ -100,28 +101,37 @@ class SignIn extends React.Component {
 
                 <div className="card-footer">
                 <button onClick={this.onSubmitHandler}
-                  className="btn float-left login_btn"
+                  className="btn float-left login_btn transonclick"
+                  style={{ textDecoration: 'none', color:"black"}}
                   type="button">Login</button>
+                <div className="mt-2 d-flex justify-content-center links transonclick" >
+                  <Link to="/signup" style={{ textDecoration: 'none', color:"#ffff"}} className="d-flex justify-content-centertext-info">Sign Up</Link>
+                </div>
+
+                <div className="d-flex justify-content-center transonclick">
+                <Link to="/password/forgot" style={{ textDecoration: 'none', color:"#ffff"}}>
+                  Forgot password?
+                </Link>
+                </div>
               </div>
               </Form>
 
-
+{/*
               <div className="card-footer">
-                <div className="d-flex justify-content-center links">
-                  <Link to="/signup" className="d-flex justify-content-centertext-info">Sign Up</Link>
-                </div>
 
-                <div className="d-flex justify-content-center">
-                <Link to="/password/forgot">Forgot your password?</Link>
-                </div>
-              </div>
+              </div> */}
 
             </div>
           </div>
         </div>
-
-
+          <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
       </React.Fragment>
+
     );
   }
 }

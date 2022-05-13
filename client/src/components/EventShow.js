@@ -38,6 +38,7 @@ function EventShow({match}) {
             Contact email: {event.email}<br></br>
         </>
         ): null}
+        
         <Footer/>
     </div>
   )

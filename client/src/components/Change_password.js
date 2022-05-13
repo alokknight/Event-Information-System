@@ -70,7 +70,7 @@ function ChangePassword() {
                 </div>
 
                 <div className="card-footer">
-                <button type='submit' className="btn float-left login_btn">Submit</button>
+                <button type='submit' className="btn transonclick float-left login_btn">Submit</button>
               </div>
               </Form>
             </div>

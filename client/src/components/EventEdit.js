@@ -49,8 +49,8 @@ function EventEdit({match}) {
         .catch(err => {
             console.log(err.message)
             alert('User dos not found with this Event')
-        }) 
-    } 
+        })
+    }
     console.log(Event)
 
   return (
@@ -92,11 +92,11 @@ function EventEdit({match}) {
                       <div className="form-outline">
                         {/* <textarea type="text" id="form3Examplev3" className="form-control form-control-lg" /> */}
                         <div className="text-dark">
-                        <CKEditor id="form3Examplev3" className="form-control form-control-lg" editor={ClassicEditor} onReady={editor =>{}} 
+                        <CKEditor id="form3Examplev3" className="form-control form-control-lg" editor={ClassicEditor} onReady={editor =>{}}
                         onChange={(e, editor) => {
                             const data = editor.getData()
                             setEvent({...Event, eBody: data})
-                        }} 
+                        }}
                         name="eBody" data={Event.eBody}/>
                         </div>
                         <label className="form-label" htmlFor="form3Examplev3" rows='10'>Event Description and Details</label>
@@ -243,12 +243,12 @@ function EventEdit({match}) {
                     </label>
                   </div>
 
-                  <button type="submit" className="btn btn-light btn-lg" data-mdb-ripple-color="dark">Update</button>
+                  <button type="submit" className="btn transonclick btn-light btn-lg" data-mdb-ripple-color="dark">Update</button>
 
                 </div>
               </div>
             </div>
-            
+
                 </div>
                 </form>
                 <Footer/>

@@ -5,7 +5,7 @@ import {useParams} from 'react-router'
 
 function EmailVerify() {
     const [validUrl, setValidUrl] = useState(false)
-    const param = useParams(); 
+    const param = useParams();
     useEffect(()=>{
         const verifyEmailUrl = async()=>{
             try{
@@ -28,10 +28,10 @@ function EmailVerify() {
                 <div className='container'>
                     <h1>Email Verified Successfully</h1>
                     <Link to='/signin'>
-                        <button className='btn btn-success'>Login</button>
+                        <button className='btn transonclick btn-success'>Login</button>
                     </Link>
                 </div>
-            ): 
+            ):
             ( <h1>404 Page Not Found</h1>)
             }
         </React.Fragment>
