@@ -91,7 +91,7 @@
 
 /* #intro */
 .play-btn::after {
-    content: '';
+    content: 'add';
     position: absolute;
     left: 50%;
     top: 50%;

@@ -29,10 +29,10 @@ export default function Esd3() {
             <Extra />
             <Gallery />
             <CardCarousel />
-            <div className="profilecard mt-4 mb-4">
+            <div className="mx-2 profilecard mt-4 mb-4">
                 <Eschd />
             </div>
-            <div className="profilecard p-2 mt-5 mb-5">
+            <div className="mx-2 profilecard p-2 mt-5 mb-5">
 
                 <div className="event-schedule-area-two bg-color pad100 mt-5 mb-5"  >
                     <div className="container" >

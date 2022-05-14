@@ -19,10 +19,10 @@ function Home() {
         <Extra/>
         <Gallery/>
         <CardCarousel/>
-        <div className="profilecard mt-4 mb-4">
+        <div className="profilecard mx-2 mt-4 mb-4">
                 <Eschd />
         </div>
-        <div className="profilecard p-2">
+        <div className="profilecard mx-2 p-2">
           <Esd1/>
         </div>
         <Sponsers />

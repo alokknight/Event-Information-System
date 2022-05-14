@@ -5,8 +5,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import Listhover from './Listhover'
 import './event.css';
-import { NavLink } from 'react-router-dom'
-
+import { NavLink ,Link} from 'react-router-dom'
 
 export default function Event({ match }) {
     const { eName } = useParams()
@@ -76,12 +75,27 @@ export default function Event({ match }) {
                                         <p>{event.code}{event.mobNo}</p>
                                     </div>
                                 </div>
+
+                                <form>
+                                    <input class="form-control form-control-sm" type="text" placeholder="email@domain.com" aria-label=".form-control-sm example"></input>
+                                </form>
                                 <hr />
-                                <div className="row">
+                                <p  style={{ "font-size": "2.1rem" }}  className="bounce">
+                                    <Link to='/'>
+                                        n
+                                        <span className="char">
+                                            <div className="col-lg-3">
+                                                <Link to='/notify' className='play-btn scrollto rotate360' ></Link>
+                                            </div>
+                                        </span>
+                                        tify
+                                    </Link>
+                                </p>
+                                {/* <div className="row">
                                     <div className="col-sm-12">
-                                        <NavLink className="btn transonclick btn-info rotate360" to="/">Notify Me</NavLink>
+                                        <NavLink  className="btn transonclick btn-info rotate360" to="/">Notify Me</NavLink>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="col-md-8 mx-5 my-2 ">
@@ -95,7 +109,7 @@ export default function Event({ match }) {
                                         allowfullscreen="true"
                                         title="video"
                                     />
-                                    <p style={{color:"blue", "font-weight":300}}>See in Full Screen for better view</p>
+                                    <p style={{ color: "blue", "font-weight": 300 }}>See in Full Screen for better view</p>
                                 </div>
                             </div>
 
@@ -127,7 +141,7 @@ export default function Event({ match }) {
                                                         <div className="event-content p-4">
                                                             <h2 className="mt-0 mb-3 font-18">{event.eTitle}</h2>
                                                             <div className="text-muted">
-                                                                <div style={{color:"black"}} className="mb-0" dangerouslySetInnerHTML={{ __html: event.eBody }}></div>
+                                                                <div style={{ color: "black" }} className="mb-0" dangerouslySetInnerHTML={{ __html: event.eBody }}></div>
                                                             </div>
 
                                                         </div>

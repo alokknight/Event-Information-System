@@ -98,6 +98,48 @@ function Dashboard() {
                                     </ul>
                                 </div>
                             </div>
+                            {/* <div className="col-sm-6 mb-3"> */}
+                                    <div className="profilecard mt-3">
+                                        <div className="profilecard-body">
+                                            <h6 className="d-flex align-items-center mb-3">
+                                                <i className="material-icons text-info mr-2">Liked Events ❤</i>
+                                            </h6>
+
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                <h6 className="mb-0"> Website</h6>
+                                                <span className="text-secondary">event1</span>
+                                            </li>
+
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                <h6 className="mb-0"> Website</h6>
+                                                <span className="text-secondary">event1</span>
+                                            </li>
+
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                <h6 className="mb-0"> Website</h6>
+                                                <span className="text-secondary">event1</span>
+                                            </li>
+
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                <h6 className="mb-0"> Website</h6>
+                                                <span className="text-secondary">event1</span>
+                                            </li>
+
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                <h6 className="mb-0"> Website</h6>
+                                                <span className="text-secondary">event1</span>
+                                            </li>
+                                            <hr />
+                                            <div className="row">
+                                                <div className="col-sm-12">
+                                                    <NavLink className="btn transonclick btn-info" to="/likedevent">All Liked</NavLink>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {/* </div> */}
+
                         </div>
 
 
@@ -142,7 +184,7 @@ function Dashboard() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-12">
-                                            <NavLink className="btn transonclick btn-info" to="/updateprofile">Edit</NavLink>
+                                            <NavLink className="btn transonclick btn-info" to="/updateprofile"><i className='bi bi-pencil-square'></i> Edit</NavLink>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +290,7 @@ function Dashboard() {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-6 mb-3">
+                                {/* <div className="col-sm-6 mb-3">
                                     <div className="profilecard h-100">
                                         <div className="profilecard-body">
                                             <h6 className="d-flex align-items-center mb-3">
@@ -288,7 +330,7 @@ function Dashboard() {
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
