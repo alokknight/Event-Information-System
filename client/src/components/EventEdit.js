@@ -48,7 +48,7 @@ function EventEdit({match}) {
         })
         .catch(err => {
             console.log(err.message)
-            alert('User dos not found with this Event')
+            alert('User does not found with this Event')
         })
     }
     console.log(Event)
